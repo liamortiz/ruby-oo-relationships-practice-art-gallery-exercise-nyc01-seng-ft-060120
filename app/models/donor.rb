@@ -9,7 +9,7 @@ class Donor
   end
 
   def artists
-    Artist.all.select{|artist| artist.donor == self}
+    Artist.all.select{|artist| artist.donors.include?(self)}
   end
 
   def artist_names

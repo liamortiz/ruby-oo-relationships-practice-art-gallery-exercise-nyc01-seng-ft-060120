@@ -1,13 +1,13 @@
 class Artist
 
-  attr_reader :name, :years_experience, :donor
+  attr_reader :name, :years_experience, :donors
 
   @@all = []
 
-  def initialize(name, years_experience, donor)
+  def initialize(name, years_experience)
     # Has many paintings, single donor
     @name = name
-    @donor = donor
+    @donors = []
     @years_experience = years_experience
     @@all << self
   end
@@ -29,6 +29,10 @@ class Artist
   def create_painting(title, price, gallery)
     # Given the arguments of title, price and gallery, creates a new painting belonging to that artist
     Painting.new(title, price, self, gallery)
+  end
+
+  def add_donor(name, amount)
+    @donors << Donor.new(name, amount)
   end
 
   def self.all

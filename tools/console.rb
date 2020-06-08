@@ -1,21 +1,19 @@
 require_relative '../config/environment.rb'
 
-
-# Donor can donate twice but have a single instance ?
 sir_williams = Donor.new("Sir Williams", 2000)
 sir_hats = Donor.new("Sir Hats", 100)
 
-michael = Artist.new("Michael", 30, sir_williams)
-tomas = Artist.new("Tomas", 100, sir_hats)
-john = Artist.new("John", 20, sir_hats)
+michael = Artist.new("Michael", 30)
+tomas = Artist.new("Tomas", 100)
+john = Artist.new("John", 20)
 
-# Impossible to donate to the same artist twice
-# And have the artist refrence a single donor
-# Without storing artist at donor and writing a method in artist
-# Or passing artst instance to donor init
+michael.add_donor("Sir Williams", 100)
+michael.add_donor("Sir Williams", 200)
+michael.add_donor("Sir Williams", 300)
+michael.add_donor("Sir Hats", 1200)
 
-# Artist has a single donor
-# Donor has multiple artists
+tomas.add_donor("Sir Hats", 1000)
+john.add_donor("Sir Pants", 1)
 
 
 small_gallery = Gallery.new("Small Gallery", "Fairfield")
